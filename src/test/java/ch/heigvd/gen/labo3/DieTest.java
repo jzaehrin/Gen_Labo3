@@ -32,4 +32,11 @@ public class DieTest {
             assertTrue(value > 0);
         }
     }
+
+    @Test
+    void shouldHaveZeroWithoutRoll() {
+        Die die = new Die();
+
+        assertEquals(die.getFaceValue(),0);
+    }
 }
