@@ -6,11 +6,11 @@ public class Die {
     private int faceValue;
     private Random random;
 
-    Die() {
+    public Die() {
         random = new Random();
     }
 
-    void roll() {
+    public void roll() {
         faceValue = random.nextInt(6) + 1;
     }
 
