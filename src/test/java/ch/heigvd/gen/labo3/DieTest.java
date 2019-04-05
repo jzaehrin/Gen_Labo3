@@ -17,4 +17,19 @@ public class DieTest {
         die.roll();
         assertTrue(die.getFaceValue() >= 1 && die.getFaceValue() <= 6);
     }
+
+    @Test
+    void shouldTouchAllValueOfADice() {
+        Die die = new Die();
+        int values[] = new int[6];
+
+        for(int i = 0; i < 100; i++) {
+            die.roll();
+            values[die.getFaceValue()-1]++;
+        }
+
+        for(int value: values) {
+            assertTrue(value > 0);
+        }
+    }
 }
