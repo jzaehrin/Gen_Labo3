@@ -1,1 +1,3 @@
-# Gen_Labo3
+# Monopoly
+
+Author : Jonathan Zaehringer, Jeremy Zerbib
