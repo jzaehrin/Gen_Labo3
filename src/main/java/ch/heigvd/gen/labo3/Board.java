@@ -21,4 +21,8 @@ public class Board {
     public Square getSquare(Square current, int step) {
         return map.get((map.indexOf(current) + step)%size);
     }
+
+    public int indexOfSquare(Square current) {
+        return map.indexOf(current);
+    }
 }
