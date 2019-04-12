@@ -8,7 +8,7 @@ public class PieceTest {
     @Test
     void pieceShouldHaveAName() {
         String name = "toto";
-        Square square = new Square("toto");
+        Square square = new RegularSquare("toto");
 
         Piece piece = new Piece(name, square);
 
@@ -19,7 +19,7 @@ public class PieceTest {
     @Test
     void pieceShouldHaveLocation(){
         String name = "toto";
-        Square square = new Square("square 1");
+        Square square = new RegularSquare("square 1");
 
         Piece piece = new Piece(name, square);
 
@@ -29,8 +29,8 @@ public class PieceTest {
     @Test
     void pieceLocationShouldHaveChanged(){
         String name = "toto";
-        Square square = new Square("square 1");
-        Square newSquare = new Square("square 2");
+        Square square = new RegularSquare("square 1");
+        Square newSquare = new RegularSquare("square 2");
 
         Piece piece = new Piece(name, square);
 
