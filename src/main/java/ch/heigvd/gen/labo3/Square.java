@@ -1,6 +1,6 @@
 package ch.heigvd.gen.labo3;
 
-public class Square {
+public abstract class Square {
     private String name;
 
     Square(String name) {
