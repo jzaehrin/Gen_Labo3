@@ -8,9 +8,9 @@ class PlayerTest {
     @Test
     void pieceShouldHaveMoved(){
         Board board = new Board();
-        Dice[] die = new Dice[2];
+        Die[] die = new Die[2];
         for (int i = 0; i < die.length; i++){
-            die[i] = new Dice();
+            die[i] = new Die();
         }
 
         Player p = new Player("test", board, die);
@@ -28,9 +28,9 @@ class PlayerTest {
     @Test
     void pieceShouldMoveOfAtLeast2(){
         Board board = new Board();
-        Dice[] die = new Dice[2];
+        Die[] die = new Die[2];
         for (int i = 0; i < die.length; i++){
-            die[i] = new Dice();
+            die[i] = new Die();
         }
 
         Player p = new Player("test", board, die);

@@ -1,7 +1,7 @@
 package ch.heigvd.gen.labo3;
 
 public class Player {
-    private Dice[] die;
+    private Die[] die;
     private final String name;
 
     private int fv = 0;
@@ -9,7 +9,7 @@ public class Player {
     private final Piece piece;
 
     private Board board;
-    public Player(String name, Board board, Dice[] die) {
+    public Player(String name, Board board, Die[] die) {
         this.die = die;
         this.name = name;
         piece = new Piece(name, board.getSquare());
@@ -17,7 +17,7 @@ public class Player {
     }
 
     public void takeTurn(){
-        for (Dice d : die){
+        for (Die d : die){
             d.roll();
             fv += d.getFaceValue();
         }
