@@ -1,13 +1,15 @@
 package ch.heigvd.gen.labo3;
 
 public class Player {
-    private Die[] die;
+    private Dice[] die;
     private final String name;
-    private int fv = 0;
-    private final Piece piece;
-    private Board board;
 
-    public Player(String name, Board board, Die[] die) {
+    private int fv = 0;
+
+    private final Piece piece;
+
+    private Board board;
+    public Player(String name, Board board, Dice[] die) {
         this.die = die;
         this.name = name;
         piece = new Piece(name, board.getSquare());
@@ -15,7 +17,7 @@ public class Player {
     }
 
     public void takeTurn(){
-        for (Die d : die){
+        for (Dice d : die){
             d.roll();
             fv += d.getFaceValue();
         }
@@ -24,5 +26,10 @@ public class Player {
         Square newLoc = board.getSquare(oldLoc, fv);
         piece.setLocation(newLoc);
     }
+
+    public Piece getPiece() {
+        return piece;
+    }
+
 
 }
