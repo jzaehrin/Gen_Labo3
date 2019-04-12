@@ -45,13 +45,6 @@ class PlayerTest {
     }
 
     @Test
-    void playerCashShouldModifyByReduceCash() {
-        player.reduceCash(500);
-
-        assertEquals(1000, player.getNetWorth());
-    }
-
-    @Test
     void playerShouldHaveMoved(){
         int oldLoc = board.indexOfSquare(player.getPiece().getLocation());
 
