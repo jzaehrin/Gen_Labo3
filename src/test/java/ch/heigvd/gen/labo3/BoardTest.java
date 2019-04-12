@@ -9,7 +9,7 @@ public class BoardTest {
     void shouldReturnStartPoint() {
         Board board = new Board();
 
-        assertEquals("square#0", board.getSquare().getName());
+        assertEquals(0, board.indexOfSquare(board.getSquare()));
     }
 
     @Test
@@ -20,7 +20,7 @@ public class BoardTest {
         for(Integer i = 1; i < 40; ++i) {
             current = board.getSquare(current, 1);
 
-            assertEquals(current.getName(), new String("square#") + i.toString());
+            assertEquals(i, board.indexOfSquare(current));
         }
     }
 
@@ -30,10 +30,9 @@ public class BoardTest {
         Square current = board.getSquare();
 
         current = board.getSquare(current, 39);
-        assertEquals(current.getName(), "square#39");
+        assertEquals(39, board.indexOfSquare(current));
 
         current = board.getSquare(current, 1);
-        assertEquals(current.getName(), "square#0");
-
+        assertEquals(0, board.indexOfSquare(current));
     }
 }
