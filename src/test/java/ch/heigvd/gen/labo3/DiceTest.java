@@ -6,23 +6,23 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class DieTest {
+public class DiceTest {
     @RepeatedTest(100)
     void shouldHaveAValueBetween1and6() {
-        Die die = new Die();
+        Dice dice = new Dice();
 
-        die.roll();
-        assertTrue(die.getFaceValue() >= 1 && die.getFaceValue() <= 6);
+        dice.roll();
+        assertTrue(dice.getFaceValue() >= 1 && dice.getFaceValue() <= 6, Integer.toString(dice.getFaceValue()));
     }
 
     @Test
     void shouldTouchAllValueOfADice() {
-        Die die = new Die();
+        Dice dice = new Dice();
         int values[] = new int[6];
 
         for(int i = 0; i < 100; i++) {
-            die.roll();
-            values[die.getFaceValue()-1]++;
+            dice.roll();
+            values[dice.getFaceValue()-1]++;
         }
 
         for(int value: values) {
@@ -32,8 +32,8 @@ public class DieTest {
 
     @Test
     void shouldHaveZeroWithoutRoll() {
-        Die die = new Die();
+        Dice dice = new Dice();
 
-        assertEquals(die.getFaceValue(),0);
+        assertEquals(dice.getFaceValue(),0);
     }
 }
