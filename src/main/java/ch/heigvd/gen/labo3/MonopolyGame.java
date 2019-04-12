@@ -19,12 +19,14 @@ public class MonopolyGame {
         this.dice[0] = new Die();
         dice[1] = new Die();
 
+        players = new ArrayList<>(nbPlayer);
         for(int i = 0; i < nbPlayer; i++)
             players.add(new Player(String.format("player#%d", i), board, dice));
     }
 
     public void playGame() {
         for(roundCnt = 0; roundCnt < nbRound; roundCnt++) {
+            System.out.println(String.format("Starting turn #%d", roundCnt));
             playRound();
         }
     }
