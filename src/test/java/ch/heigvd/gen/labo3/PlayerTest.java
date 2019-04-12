@@ -6,14 +6,26 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
     @Test
-    void pieceShouldHaveMoved(){
+    void playerShould1500DollarAtStart() {
         Board board = new Board();
-        Die[] die = new Die[2];
-        for (int i = 0; i < die.length; i++){
-            die[i] = new Die();
+        Die[] dice = new Die[2];
+        dice[0] = new Die();
+        dice[1] = new Die();
+
+        Player player = new Player("test", board, dice);
+
+        assertEquals(1500, player.getNetWorth());
+    }
+
+    @Test
+    void playerShouldHaveMoved(){
+        Board board = new Board();
+        Die[] dice = new Die[2];
+        for (int i = 0; i < dice.length; i++){
+            dice[i] = new Die();
         }
 
-        Player p = new Player("test", board, die);
+        Player p = new Player("test", board, dice);
 
         int oldLoc = board.indexOfSquare(p.getPiece().getLocation());
 
@@ -26,14 +38,14 @@ class PlayerTest {
     }
 
     @Test
-    void pieceShouldMoveOfAtLeast2(){
+    void playerShouldMoveOfAtLeast2(){
         Board board = new Board();
-        Die[] die = new Die[2];
-        for (int i = 0; i < die.length; i++){
-            die[i] = new Die();
+        Die[] dice = new Die[2];
+        for (int i = 0; i < dice.length; i++){
+            dice[i] = new Die();
         }
 
-        Player p = new Player("test", board, die);
+        Player p = new Player("test", board, dice);
 
         int oldLoc = board.indexOfSquare(p.getPiece().getLocation());
 
