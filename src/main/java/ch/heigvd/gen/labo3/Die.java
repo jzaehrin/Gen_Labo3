@@ -2,11 +2,11 @@ package ch.heigvd.gen.labo3;
 
 import java.util.Random;
 
-public class Dice {
+public class Die {
     private int faceValue;
     private Random random;
 
-    public Dice() {
+    public Die() {
         random = new Random();
     }
 
