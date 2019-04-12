@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RegularSquareTest {
+public class GoSquareTest {
     @Test
-    void regularSquareShouldHaveAName() {
-        String name = "RegularSquare";
+    void goSquareShouldHaveAName() {
+        String name = "GoSquare";
 
         Square square = new RegularSquare(name);
 
