@@ -8,12 +8,31 @@ public class Player {
 
     private final Piece piece;
 
+    private Integer netWorth;
+
     private Board board;
     public Player(String name, Board board, Die[] die) {
         this.die = die;
         this.name = name;
-        piece = new Piece(name, board.getSquare());
+        this.piece = new Piece(name, board.getSquare());
         this.board = board;
+        this.netWorth = 1500;
+    }
+
+    public Piece getPiece() {
+        return piece;
+    }
+
+    public Integer getNetWorth() {
+        return netWorth;
+    }
+
+    public void addCash(Integer sum) {
+        netWorth += sum;
+    }
+
+    public void reduceCash(Integer sum) {
+        netWorth -= sum;
     }
 
     public void takeTurn(){
@@ -26,10 +45,4 @@ public class Player {
         Square newLoc = board.getSquare(oldLoc, fv);
         piece.setLocation(newLoc);
     }
-
-    public Piece getPiece() {
-        return piece;
-    }
-
-
 }
