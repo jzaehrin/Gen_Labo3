@@ -7,7 +7,7 @@ public class MonopolyGame {
     private int roundCnt;
     private Board board;
     private ArrayList<Player> players;
-    private Die[] dice;
+    private Cup cup;
 
     public MonopolyGame(int nbPlayer, int nbRound) {
         this.nbRound = nbRound;
@@ -15,13 +15,13 @@ public class MonopolyGame {
 
         this.board = new Board();
 
-        this.dice = new Die[2];
-        this.dice[0] = new Die();
-        dice[1] = new Die();
+        this.cup = new Cup();
+        this.cup.addDie(new Die());
+        this.cup.addDie(new Die());
 
         players = new ArrayList<>(nbPlayer);
         for(int i = 0; i < nbPlayer; i++)
-            players.add(new Player(String.format("player#%d", i), board, dice));
+            players.add(new Player(String.format("player#%d", i), board, cup));
     }
 
     public void playGame() {
