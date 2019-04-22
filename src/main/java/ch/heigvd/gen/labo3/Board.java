@@ -10,7 +10,7 @@ public class Board {
         map = new ArrayList<>(size);
 
         for(Integer i = 0; i < size; i++) {
-            map.add(new Square("square#" + i.toString()));
+            map.add(new RegularSquare("square#" + i.toString()));
         }
     }
 
