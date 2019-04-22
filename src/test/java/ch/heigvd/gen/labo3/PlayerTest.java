@@ -9,20 +9,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
     private static Board board;
-    private static Die[] dice;
+    private static Cup cup;
     private Player player;
 
     @BeforeEach
     void init() {
-        player = new Player("test", board, dice);
+        player = new Player("test", board, cup);
     }
 
     @BeforeAll
     static void each() {
         board = new Board();
-        dice = new Die[2];
-        dice[0] = new Die();
-        dice[1] = new Die();
+        cup = new Cup();
+        cup.addDie(new Die());
+        cup.addDie(new Die());
     }
 
     @Test
