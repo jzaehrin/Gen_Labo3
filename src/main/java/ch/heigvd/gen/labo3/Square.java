@@ -10,4 +10,6 @@ public abstract class Square {
     public String getName() {
         return name;
     }
+
+    public abstract boolean landedOn(Player p);
 }

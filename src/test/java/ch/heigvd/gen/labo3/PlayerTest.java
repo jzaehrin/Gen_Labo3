@@ -1,6 +1,5 @@
 package ch.heigvd.gen.labo3;
 
-import com.sun.tracing.dtrace.ProviderAttributes;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

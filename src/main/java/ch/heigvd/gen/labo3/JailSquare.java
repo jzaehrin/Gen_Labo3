@@ -1,9 +1,8 @@
 package ch.heigvd.gen.labo3;
 
-public class RegularSquare extends Square{
+public class JailSquare extends Square{
 
-
-    RegularSquare(String name) {
+    JailSquare(String name){
         super(name);
     }
 
@@ -11,6 +10,4 @@ public class RegularSquare extends Square{
     public boolean landedOn(Player p) {
         return p.getPiece().getLocation() == this;
     }
-
-
 }
