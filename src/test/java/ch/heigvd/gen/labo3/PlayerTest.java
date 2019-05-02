@@ -56,6 +56,13 @@ class PlayerTest {
     }
 
     @Test
+    void shouldThrowAnExceptionIfnetWorthInNegatif () {
+        assertThrows(RuntimeException.class, () -> {
+            player.reduceCash(player.getNetWorth() + 1);
+        });
+    }
+
+    @Test
     void playerShouldMoveOfAtLeast2(){
         int oldLoc = board.indexOfSquare(player.getPiece().getLocation());
 

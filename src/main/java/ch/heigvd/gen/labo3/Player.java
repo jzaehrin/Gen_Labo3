@@ -32,6 +32,9 @@ public class Player {
     }
 
     public void reduceCash(Integer sum) {
+        if(netWorth < sum)
+            throw new RuntimeException("Impossible to have a negative netWorth");
+
         netWorth -= sum;
     }
 
