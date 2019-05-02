@@ -17,7 +17,7 @@ class PlayerTest {
     }
 
     @BeforeAll
-    static void each() {
+    static void setup() {
         board = new Board();
         cup = new Cup();
         cup.addDie(new Die());

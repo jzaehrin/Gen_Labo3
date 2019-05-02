@@ -1,93 +1,57 @@
 package ch.heigvd.gen.labo3;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class IncomeTaxSquareTest {
-    @Test
-    void incomeTaxSquareShouldHaveAName() {
-        String name = "IncomeTaxSquare";
+    private static Board board;
+    private static Cup cup;
+    private static IncomeTaxSquare incomeTaxSquare;
 
-        Square square = new IncomeTaxSquare(name);
+    private Player player;
 
-        assertEquals(square.getName(), name);
+    @BeforeEach
+    void init() {
+        player = new Player("test", board, cup);
     }
 
-    @Test
-    void incomeTaxSquareIsLandedOn() {
-        Board board = new Board();
-        Cup cup = new Cup();
+    @BeforeAll
+    static void setup() {
+        board = new Board();
+        cup = new Cup();
         cup.addDie(new Die());
         cup.addDie(new Die());
-        Player player = new Player("Player", board, cup);
 
-        String name = "IncomeTax";
-        Square square = new IncomeTaxSquare(name);
-        player.getPiece().setLocation(square);
-        assertTrue(square.landedOn(player));
-
-    }
-
-
-    @Test
-    void cashIsReduced(){
-        Board board = new Board();
-        Cup cup = new Cup();
-        cup.addDie(new Die());
-        cup.addDie(new Die());
-        Player player = new Player("Player", board, cup);
-        int w = player.getNetWorth();
-
-        String name = "IncomeTax";
-        Square square = new IncomeTaxSquare(name);
-        player.getPiece().setLocation(square);
-        square.landedOn(player);
-
-        assertTrue(w > player.getNetWorth());
-
+        incomeTaxSquare = new IncomeTaxSquare("IncomeTaxSquare#1");
     }
 
     @Test
     void cashIsReducedBy200(){
-        Board board = new Board();
-        Cup cup = new Cup();
-        cup.addDie(new Die());
-        cup.addDie(new Die());
-        Player player = new Player("Player", board, cup);
+        player.reduceCash(player.getNetWorth());
+        player.addCash(2000);
 
-        // Adds the cash of a player by 1500.
-        // As the initial cash of a player is set at 1500, Income Tax should come at a price of 200
-        player.addCash(1500);
-        int w = player.getNetWorth();
+        int beforeIncomeTax = player.getNetWorth();
 
-        String name = "IncomeTax";
-        Square square = new IncomeTaxSquare(name);
-        player.getPiece().setLocation(square);
-        square.landedOn(player);
+        player.getPiece().setLocation(incomeTaxSquare);
+        player.getPiece().getLocation().landedOn(player);
 
-
-        System.out.println(w / 10);
-        assertEquals(player.getNetWorth() + 200, w);
+        assertEquals(beforeIncomeTax, player.getNetWorth() + 200);
     }
 
     @Test
     void cashIsReducedBy150(){
-        Board board = new Board();
-        Cup cup = new Cup();
-        cup.addDie(new Die());
-        cup.addDie(new Die());
-        Player player = new Player("Player", board, cup);
+        player.reduceCash(player.getNetWorth());
+        player.addCash(1500);
 
-        // As the initial cash of a player is set at 1500, Income Tax should come at a price of 150
-        int w = player.getNetWorth();
+        int beforeIncomeTax = player.getNetWorth();
 
-        String name = "IncomeTax";
-        Square square = new IncomeTaxSquare(name);
-        player.getPiece().setLocation(square);
-        square.landedOn(player);
+        player.getPiece().setLocation(incomeTaxSquare);
+        player.getPiece().getLocation().landedOn(player);
 
-        assertEquals(player.getNetWorth() + 150, w);
+        assertEquals(beforeIncomeTax, player.getNetWorth() + 150);
     }
 
 }

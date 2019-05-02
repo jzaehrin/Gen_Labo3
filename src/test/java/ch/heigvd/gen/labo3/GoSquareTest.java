@@ -1,5 +1,6 @@
 package ch.heigvd.gen.labo3;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,45 +8,35 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GoSquareTest {
+    private static Board board;
+    private static Cup cup;
+    private static GoSquare goSquare;
 
-    @Test
-    void goSquareShouldHaveAName() {
-        String name = "GoSquare";
+    private Player player;
 
-        Square square = new GoSquare(name);
+    @BeforeEach
+    void init() {
+        player = new Player("test", board, cup);
+    }
 
-        assertEquals(square.getName(), name);
+    @BeforeAll
+    static void setup() {
+        board = new Board();
+        cup = new Cup();
+        cup.addDie(new Die());
+        cup.addDie(new Die());
+
+        goSquare = new GoSquare();
     }
 
     @Test
     void netWorthHasChanged() {
-        Board board = new Board();
-        Cup cup = new Cup();
-        cup.addDie(new Die());
-        cup.addDie(new Die());
-        Player player = new Player("Player", board, cup);
+        int beforeGo = player.getNetWorth();
 
-        String name = "GoSquare";
-        Square square = new GoSquare(name);
-        int w = player.getNetWorth();
-        player.getPiece().setLocation(square);
-        square.landedOn(player);
-        int afterGo = player.getNetWorth() - 200;
-        assertEquals(afterGo, w);
-    }
+        player.getPiece().setLocation(goSquare);
+        player.getPiece().getLocation().landedOn(player);
 
-    @Test
-    void goSquareIsLandedOn() {
-        Board board = new Board();
-        Cup cup = new Cup();
-        cup.addDie(new Die());
-        cup.addDie(new Die());
-        Player player = new Player("Player", board, cup);
-
-        String name = "GoSquare";
-        Square square = new GoSquare(name);
-        player.getPiece().setLocation(square);
-        assertTrue(square.landedOn(player));
-
+        int afterGo = player.getNetWorth();
+        assertTrue(beforeGo + 200 == afterGo);
     }
 }

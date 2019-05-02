@@ -34,6 +34,6 @@ public class DieTest {
     void shouldHaveZeroWithoutRoll() {
         Die die = new Die();
 
-        assertEquals(die.getFaceValue(),0);
+        assertEquals(0, die.getFaceValue());
     }
 }

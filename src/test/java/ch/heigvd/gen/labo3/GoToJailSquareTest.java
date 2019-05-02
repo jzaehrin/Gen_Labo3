@@ -1,69 +1,40 @@
 package ch.heigvd.gen.labo3;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class GoToJailSquareTest {
-    @Test
-    void goToJailSquareShouldHaveAName() {
-        String name = "GoToJailSquare";
+    private static Board board;
+    private static Cup cup;
+    private static JailSquare jailSquare;
+    private static GoToJailSquare goToJailSquare;
 
-        Square square = new GoToJail(name);
+    private Player player;
 
-        assertEquals(square.getName(), name);
+    @BeforeEach
+    void init() {
+        player = new Player("test", board, cup);
+    }
+
+    @BeforeAll
+    static void setup() {
+        board = new Board();
+        cup = new Cup();
+        cup.addDie(new Die());
+        cup.addDie(new Die());
+
+        jailSquare = new JailSquare("JailSquare#1");
+        goToJailSquare = new GoToJailSquare("GoToJailSquare#1", jailSquare);
     }
 
     @Test
-    void netWorthHasNotChanged() {
-        Board board = new Board();
-        Cup cup = new Cup();
-        cup.addDie(new Die());
-        cup.addDie(new Die());
-        Player player = new Player("Player", board, cup);
+    void playerGoToJailWhenIsOnGoToJailSquare() {
+        player.getPiece().setLocation(goToJailSquare);
+        player.getPiece().getLocation().landedOn(player);
 
-        String name = "GoToJail";
-        Square square = new GoToJail(name);
-        int w = player.getNetWorth();
-        player.getPiece().setLocation(square);
-        square.landedOn(player);
-        int afterGo = player.getNetWorth();
-        assertEquals(afterGo, w);
+        assertEquals(jailSquare, player.getPiece().getLocation());
     }
-
-    @Test
-    void gotoJailSquareIsLandedOn() {
-        Board board = new Board();
-        Cup cup = new Cup();
-        cup.addDie(new Die());
-        cup.addDie(new Die());
-        Player player = new Player("Player", board, cup);
-
-        String name = "GoToJail";
-        Square square = new GoToJail(name);
-        player.getPiece().setLocation(square);
-        assertTrue(square.landedOn(player));
-
-    }
-
-    @Test
-    void playerIsInJail(){
-        Board board = new Board();
-        Cup cup = new Cup();
-        cup.addDie(new Die());
-        cup.addDie(new Die());
-        Player player = new Player("Player", board, cup);
-
-        String name = "GoToJail";
-        Square square = new GoToJail(name);
-        player.getPiece().setLocation(square);
-        square.landedOn(player);
-        Square test = player.getPiece().getLocation();
-
-        assertEquals(player.getPiece().getLocation().getName(), "jail");
-
-    }
-
-
-
 }

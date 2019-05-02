@@ -7,7 +7,5 @@ public class JailSquare extends Square{
     }
 
     @Override
-    public boolean landedOn(Player p) {
-        return p.getPiece().getLocation() == this;
-    }
+    public void landedOn(Player p) { }
 }

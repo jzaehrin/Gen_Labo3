@@ -8,9 +8,7 @@ public class RegularSquare extends Square{
     }
 
     @Override
-    public boolean landedOn(Player p) {
-        return p.getPiece().getLocation() == this;
-    }
+    public void landedOn(Player p) { }
 
 
 }

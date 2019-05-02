@@ -9,9 +9,16 @@ public class Board {
     public Board() {
         map = new ArrayList<>(size);
 
-        for(Integer i = 0; i < size; i++) {
+        map.add(new GoSquare());
+
+        for(Integer i = 1; i < size; i++) {
             map.add(new RegularSquare("square#" + i.toString()));
         }
+
+        JailSquare jail = new JailSquare("JailSquare#1");
+        map.set(5, jail);
+        map.set(15, new IncomeTaxSquare("IncomeTaxSquare#1"));
+        map.set(30, new GoToJailSquare("GoToFailSquare#1", jail));
     }
 
     public Square getSquare() {

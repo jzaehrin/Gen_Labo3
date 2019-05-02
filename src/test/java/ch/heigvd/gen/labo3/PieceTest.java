@@ -3,6 +3,7 @@ package ch.heigvd.gen.labo3;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class PieceTest {
     @Test
@@ -12,7 +13,7 @@ public class PieceTest {
 
         Piece piece = new Piece(name, square);
 
-        assertEquals(piece.getName(), name);
+        assertEquals(name, piece.getName());
     }
 
 
@@ -23,7 +24,7 @@ public class PieceTest {
 
         Piece piece = new Piece(name, square);
 
-        assertEquals(piece.getLocation(), square);
+        assertEquals(square, piece.getLocation());
     }
 
     @Test
@@ -36,6 +37,6 @@ public class PieceTest {
 
         piece.setLocation(newSquare);
 
-        assertEquals(piece.getLocation(), newSquare);
+        assertNotEquals(square, piece.getLocation());
     }
 }
